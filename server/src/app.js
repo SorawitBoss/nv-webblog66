@@ -1,26 +1,29 @@
-let express = require('express')
-const app = express()
+let express = require("express");
+let bodyParser = require("body-parser")
+const {sequelize} = require('./models')
 
-app.get('/status', function (req, res) {
-    res.send('Hello nodejs server')
-})
+const config = require('./config/config')
 
-app.get('/hello/:person', function (req,res) {
-    console.log('hello - ' + req.params.person)
-    res.send('sey hello eith' + req.params.person)
-})
-//get user by id
-app.get('/user/:userId', function (req, res) {
-    res.send('ดูข้อมูลผู้ใช้งาน')
-})
+const app = express();
 
-//get all user
-app.get('/user', function (req, res) {
-    res.send('เรียกข้อมูลผู้ใช้งาน')
-})
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-let port = 8081
+require('./routes')(app)
 
-app.listen(port, function () {
-    console.log('server running on ' + port)
+app.get("/status", function (req, res) {
+  res.send("Hello nodejs server belong to nayo");
+});
+
+app.get("/hello/:name", function (req, res) {
+  console.log("hello - " + req.params.name);
+  res.send("sey hello eith" + req.params.name);
+});
+
+let port = process.env.PORT || config.port
+
+sequelize.sync({force: false}).then(() => {
+  app.listen(port, function () {
+    console.log("server running on " + port);
+  })
 })
