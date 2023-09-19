@@ -2,9 +2,9 @@ const UserController = require("./controllers/UserController");
 
 module.exports = (app) => {
   //get all user
-  app.get("/user", UserController.index),
+  app.get("/users", UserController.index),
   //create user
-  app.post("/user/:userId", UserController.create),
+  app.post("/user", UserController.create),
   //edit
   app.put("/user/:userId", UserController.put),
   //delete

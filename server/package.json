@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "sorawit phrabumrung",
+  "author": "Sorawit Phrabumrung",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "sequelize": "^6.32.1",
     "sqlite3": "^5.1.6"
