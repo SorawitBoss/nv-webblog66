@@ -1,3 +1,4 @@
+const UserAuthenController = require("./controllers/UserAuthenController");
 const UserController = require("./controllers/UserController");
 
 module.exports = (app) => {
@@ -10,5 +11,7 @@ module.exports = (app) => {
   //delete
   app.delete("/user/:userId", UserController.delete),
   //show by id
-  app.get("/user/:userId", UserController.show);
+  app.get("/user/:userId", UserController.show),
+   //login
+   app.post("/login", UserAuthenController.login);
 };
