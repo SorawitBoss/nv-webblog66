@@ -11,9 +11,9 @@ export default {
     return Api().post('user', user) 
   }, 
   put (user) { 
-    return Api().put('user/'+user.id) 
+    return Api().put('user/'+user.id, user) 
   }, 
   delete (user) { 
-    return Api().delete('user/'+user.id) 
+    return Api().delete('user/'+user.id, user) 
   }, 
 } 
